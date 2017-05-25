@@ -13,15 +13,28 @@ describe('fizzBuzzer', (() => {
             }).should.throw(Error);
         });
     }))
-    it('should return "fizz-buzz" if number is divisible by 15, fizz if divisible by 3, and buzz if divisible by 5', (() => {
-        const normalCases = [
-          {a: 315, expected: "fizz-buzz"},
-          {a: 9, expected: "fizz"},
-          {a: 25, expected: "buzz"}
-        ];
+    it('should return "fizz-buzz" if number is divisible by 15', (() => {
+        const normalCases = [315, 15, 45];
         normalCases.forEach(input => {
-            const answer = fizzBuzzer(input.a)
-            answer.should.equal(input.expected)
+            fizzBuzzer(input).should.equal('fizz-buzz')
+        })
+    }))
+    it('should return fizz if divisible by 3', (() => {
+        const normalCases = [9, 27, 39];
+        normalCases.forEach(input => {
+            fizzBuzzer(input).should.equal("fizz")
+        })
+    }))
+    it('should return buzz if divisible by 5', (() => {
+        const normalCases = [40, 95, 755];
+        normalCases.forEach(input => {
+          fizzBuzzer(input).should.equal("buzz");
+        })
+    }))
+    it('should return the input if not divisible by 3 or 5', (() => {
+        const normalCases = [401, 764, 1]
+        normalCases.forEach(input => {
+          fizzBuzzer(input).should.equal(input)
         })
     }))
  }))
